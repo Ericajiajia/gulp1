@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <meta http-equiv="Access-Control-Allow-Origin" content="http://api.douban.com/v2/movie/top250" />
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/jquery.min.js"></script>
+    <title>Just for test</title>
+</head>
+<body>
+<input type="button" value="确认" class="confirm-button">
+<div id="data-container"></div>
+</body>
+<script>
+$('.confirm-button')[0].addEventListener('click', function writeData(e) {
+    console.log(e.target.nodeName)
+    $.ajax({
+    url: 'http://api.douban.com/v2/movie/top250',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    type: "GET", /* or type:"GET" or type:"PUT" */
+    dataType: "json",
+    data: {
+    },
+    success: function (result) {
+        console.log(result); 
+         $('#data-container')[0].innerHTML = JSON.parse(res)   
+    },
+    error: function () {
+        console.log("error");
+    }
+});
+})
+</script>
+</html>
